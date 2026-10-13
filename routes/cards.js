@@ -1,18 +1,18 @@
 const router = require('express').Router();
-const path = require('path');
-const fs = require('fs');
 
-const cardsPath = path.join(__dirname, '../data/cards.json');
+// eslint-disable-next-line import/no-unresolved, import/extensions
+const {
+  getCards,
+  createCard,
+  deleteCard,
+  likeCard,
+  dislikeCard,
+} = require('../controllers/cards');
 
-// GET /cards - Retorna a lista de cards
-router.get('/', (req, res) => {
-  try {
-    const data = fs.readFileSync(cardsPath, 'utf8');
-    const cards = JSON.parse(data);
-    res.send(cards);
-  } catch (err) {
-    res.status(500).send({ message: 'Erro ao ler dados dos cards' });
-  }
-});
+router.get('/', getCards);
+router.post('/', createCard);
+router.delete('/:cardId', deleteCard);
+router.put('/:cardId/likes', likeCard);
+router.delete('/:cardId/likes', dislikeCard);
 
 module.exports = router;

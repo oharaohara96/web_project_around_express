@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/oharaohara96/web_project_around_express#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mongoose": "^8.24.5"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
